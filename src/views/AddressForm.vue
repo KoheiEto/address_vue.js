@@ -1,0 +1,46 @@
+<template>
+  <v-contanier text-xs-center>
+    <v-col row wrap jutify-center>
+      
+      <v-row xs12 class="text-center">
+        <h1>連絡先編集</h1>
+        <h2>33</h2>
+      </v-row>
+
+      <v-row xs12 mt-5>
+
+        <v-card>
+          <v-card-text>
+            <v-form>
+              <v-text-field v-model="address.name" label="名前"></v-text-field>
+              <v-text-field v-model="address.tel" label="電話番号"></v-text-field>
+              <v-text-field v-model="address.email" label="メールアドレス"></v-text-field>
+              <v-text-field v-model="address.address" label="住所"></v-text-field>
+              <div class="text-center">
+                <v-btn @click="$router.push({ name:'addresses' })">キャンセル</v-btn>
+                <v-btn color="info" class="ml-2">保存</v-btn>
+              </div>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-row> 
+    </v-col>
+  </v-contanier>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      address: {}
+    }
+  },
+  methods: {
+    submit() {
+      this.addAddress(this.address);
+      this.$router.push({ name: "addresses" });
+      this.address = {};
+    },
+  }
+}
+</script>

@@ -1,32 +1,41 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    
+    <v-app-bar app color="primary" dark>
+      <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
+      <!-- onでtogggleSideMenuメソッドを呼び出し -->
+      <v-toolbar-title>マイアドレス帳</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    
+    <sideNav /><!-- sideNavコンポーネントを指定 -->
+    <v-content>
+      <v-container fluid fill-height allign-start>
+        <router-view /><!-- viewのコンポーネントを指定 -->
+      </v-container>
+    </v-content>
+  
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+/* SideNav単一ファイルコンポーネントのインポート */
+import SideNav from './components/SideNav';
+import {  } from "vuex";
 
-#nav {
-  padding: 30px;
+export default {
+  name: 'App',
+  components: {
+    SideNav, /* 使用するためにコンポーネントに追加 */
+  },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  data: () => ({
+    //
+  }),
+  methods: {
+    toggleSideMenu: function() {
+      this.$store.commit("toggleSideMenu");
     }
   }
-}
-</style>
+};
+</script>
