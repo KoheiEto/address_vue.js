@@ -1,72 +1,21 @@
 <template>
-<v-container>
-
-  <v-row>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    <v-col cols="">
-    <SaleGraph />
-    </v-col>
-
-    
-
-  </v-row>
-
-</v-container> 
+  <v-container>
+    <v-layout>
+      <v-flex xs12 mt-5>
+        <v-btn color="info" @click="login">Googleアカウントでログイン</v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
 /* import HelloWorld from '@/components/Addresses.vue' */
-import SaleGraph from '../components/SaleGraph'
+import { mapActions } from "vuex";
 
 export default {
-  name: 'Home',
-  components: {
-    SaleGraph
+  methods: {
+    ...mapActions(["login"]),
   },
   mounted(){
     console.log(this.$vuetify.breakpoint)
